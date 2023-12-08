@@ -4,21 +4,19 @@ import { FormConta } from "./Components/FormConta";
 import { useState } from "react";
 
 const App = () => {
-  const [visibleBtn, setVisibleBtn] = useState(true);
+  const [selectFriend, setSelectFriend] = useState(null);
 
-  const handleChangeVisible = () => setVisibleBtn((v) => !v);
+  const handleClickFriend = (friend) =>
+    setSelectFriend((p) => (p?.name === friend.name ? null : friend));
 
   return (
     <>
       <Header />
       <Container
-        visibleBtn={visibleBtn}
-        handleChangeVisible={handleChangeVisible}
+        selectFriend={selectFriend}
+        handleClickFriend={handleClickFriend}
       />
-      <FormConta
-        visibleBtn={visibleBtn}
-        handleChangeVisible={handleChangeVisible}
-      />
+      <FormConta selectFriend={selectFriend} />
     </>
   );
 };

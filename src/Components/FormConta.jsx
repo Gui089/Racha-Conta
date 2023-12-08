@@ -1,9 +1,9 @@
-const FormConta = ({ visibleBtn }) => {
+const FormConta = ({ selectFriend }) => {
   return (
-    !visibleBtn && (
+    selectFriend && (
       <div className="form-conta">
-        <form action="">
-          <h2>Rachar Conta Com Renata</h2>
+        <form className="form-split-bill" action="">
+          <h2>Rachar Conta Com {selectFriend.name}</h2>
           <label>valor total</label>
           <input type="text" />
           <label>Seus gastos</label>

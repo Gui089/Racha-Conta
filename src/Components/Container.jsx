@@ -16,7 +16,7 @@ const friends = [
   },
 ];
 
-const Container = () => {
+const Container = ({ handleClickFriend, selectFriend }) => {
   const getMsgInfo = (balance) =>
     balance < 0
       ? { message: `Você deve ${Math.abs(balance)} reais`, color: "red-debit" }
@@ -30,12 +30,20 @@ const Container = () => {
         {friends.map((item, index) => {
           const { message, color } = getMsgInfo(item.accountValue);
 
+          const isSelectedFriend = item.name === selectFriend?.name;
+          console.log("isSelectedFriend: ", isSelectedFriend);
+
           return (
             <li key={index}>
               <img src={item.imgUrl} alt="" />
               <h3>{item.name}</h3>
               <p className={color}>{message}</p>
-              <button className="button">Selecionar</button>
+              <button
+                onClick={() => handleClickFriend(item)}
+                className={`button ${isSelectedFriend ? "button-close" : ""}`}
+              >
+                {isSelectedFriend ? "Fechar" : "Selecionar"}
+              </button>
             </li>
           );
         })}
