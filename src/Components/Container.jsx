@@ -16,7 +16,7 @@ const friends = [
   },
 ];
 
-const Container = ({ handleClickFriend, selectFriend }) => {
+const Container = ({ handleClickFriend, selectFriend, friendsAcc }) => {
   const getMsgInfo = (balance) =>
     balance < 0
       ? { message: `Você deve ${Math.abs(balance)} reais`, color: "red-debit" }
@@ -27,7 +27,7 @@ const Container = ({ handleClickFriend, selectFriend }) => {
   return (
     <div className="app">
       <ul className="sidebar">
-        {friends.map((item, index) => {
+        {friendsAcc.map((item, index) => {
           const { message, color } = getMsgInfo(item.accountValue);
 
           const isSelectedFriend = item.name === selectFriend?.name;
@@ -53,4 +53,4 @@ const Container = ({ handleClickFriend, selectFriend }) => {
   );
 };
 
-export { Container };
+export { Container, friends };
