@@ -1,17 +1,20 @@
 const friends = [
   {
     name: "Henrique",
-    imgUrl: "./imgs/friends/henrique-48.jpg",
+    imgUrl:
+      "https://github.com/Gui089/Racha-Conta/blob/main/imgs/friends/henrique-48.jpg?raw=true",
     accountValue: -8,
   },
   {
     name: "Alessandra",
-    imgUrl: "./imgs/friends/alessandra-48.jpg",
+    imgUrl:
+      "https://github.com/Gui089/Racha-Conta/blob/main/imgs/friends/alessandra-48.jpg?raw=true",
     accountValue: 8,
   },
   {
     name: "Renata",
-    imgUrl: "./imgs/friends/renata-48.jpg",
+    imgUrl:
+      "https://github.com/Gui089/Racha-Conta/blob/main/imgs/friends/renata-48.jpg?raw=true",
     accountValue: 8,
   },
 ];
