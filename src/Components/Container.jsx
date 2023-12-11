@@ -53,6 +53,15 @@ const Container = ({
             </li>
           );
         })}
+        {showFormAddFriend && (
+          <form className="form-add-friend">
+            <label>Nome</label>
+            <input type="text" />
+            <label>Foto</label>
+            <input type="text" />
+            <button className="button">Adicionar</button>
+          </form>
+        )}
         <button
           onClick={handleClickAddFriend}
           className={`button ${showFormAddFriend ? "button-close" : ""}`}
