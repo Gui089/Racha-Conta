@@ -1,13 +1,28 @@
-const FormConta = ({
-  selectFriend,
-  totalBill,
-  handleChangeBill,
-  mySpend,
-  handleChangeMySpend,
-  whoWillPay,
-  handleChangeWhoWillPay,
-  handleSubmitShareBill,
-}) => {
+import { useState } from "react";
+
+const FormConta = ({ selectFriend, onSubmitShareBill }) => {
+  const [totalBill, setTotalBill] = useState("");
+  const [mySpend, setMySpend] = useState("");
+  const [whoWillpay, setWhoWillWpay] = useState("you");
+
+  const handleChangeBill = (e) => setTotalBill(e.target.value);
+  const handleChangeMySpend = (e) => setMySpend(e.target.value);
+  const handleChangeWhoWillPay = (e) => setWhoWillWpay(e.target.value);
+
+  const handleSubmitShareBill = (e) => {
+    e.preventDefault();
+    onSubmitShareBill({
+      ...selectFriend,
+      accountValue:
+        whoWillpay === "you"
+          ? selectFriend.accountValue + (+totalBill - +mySpend)
+          : selectFriend.accountValue - +mySpend,
+    });
+    setTotalBill("");
+    setMySpend("");
+    setWhoWillWpay("you");
+  };
+
   return (
     selectFriend && (
       <div className="form-conta">
@@ -22,7 +37,7 @@ const FormConta = ({
           <label>Seus gastos</label>
           <input value={mySpend} onChange={handleChangeMySpend} type="text" />
           <label>Quem vai pagar ?</label>
-          <select value={whoWillPay} onChange={handleChangeWhoWillPay}>
+          <select value={whoWillpay} onChange={handleChangeWhoWillPay}>
             <option value="voce">Você</option>
             <option value={selectFriend.name}>{selectFriend.name}</option>
           </select>
