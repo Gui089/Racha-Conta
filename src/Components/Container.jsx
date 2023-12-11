@@ -16,7 +16,13 @@ const friends = [
   },
 ];
 
-const Container = ({ handleClickFriend, selectFriend, friendsAcc }) => {
+const Container = ({
+  handleClickFriend,
+  selectFriend,
+  friendsAcc,
+  handleClickAddFriend,
+  showFormAddFriend,
+}) => {
   const getMsgInfo = (balance) =>
     balance < 0
       ? { message: `Você deve ${Math.abs(balance)} reais`, color: "red-debit" }
@@ -25,7 +31,7 @@ const Container = ({ handleClickFriend, selectFriend, friendsAcc }) => {
       : { message: "Estão quites", color: "white-neutral" };
 
   return (
-    <div className="app">
+    <aside className="app">
       <ul className="sidebar">
         {friendsAcc.map((item, index) => {
           const { message, color } = getMsgInfo(item.accountValue);
@@ -47,9 +53,14 @@ const Container = ({ handleClickFriend, selectFriend, friendsAcc }) => {
             </li>
           );
         })}
-        <button className="button">Adicionar amigo(a)</button>
+        <button
+          onClick={handleClickAddFriend}
+          className={`button ${showFormAddFriend ? "button-close" : ""}`}
+        >
+          {showFormAddFriend ? "Fechar" : "Adicionar amigo(a)"}
+        </button>
       </ul>
-    </div>
+    </aside>
   );
 };
 

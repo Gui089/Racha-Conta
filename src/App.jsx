@@ -9,7 +9,9 @@ const App = () => {
   const [totalBill, setTotalBill] = useState("");
   const [mySpend, setMySpend] = useState("");
   const [whoWillpay, setWhoWillWpay] = useState("you");
+  const [showFormAddFriend, setShowFormAddFriend] = useState(false);
 
+  const handleClickAddFriend = () => setShowFormAddFriend((b) => !b);
   const handleClickFriend = (friend) =>
     setSelectFriend((p) => (p?.name === friend.name ? null : friend));
 
@@ -44,6 +46,8 @@ const App = () => {
         selectFriend={selectFriend}
         handleClickFriend={handleClickFriend}
         friendsAcc={friendsAcc}
+        handleClickAddFriend={handleClickAddFriend}
+        showFormAddFriend={showFormAddFriend}
       />
       <FormConta
         totalBill={totalBill}
