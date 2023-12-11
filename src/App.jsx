@@ -10,6 +10,8 @@ const App = () => {
   const [mySpend, setMySpend] = useState("");
   const [whoWillpay, setWhoWillWpay] = useState("you");
   const [showFormAddFriend, setShowFormAddFriend] = useState(false);
+  const [nameOffFriend, setNameOffFriend] = useState("");
+  const [imgOffFriend, setImgOffFriend] = useState("");
 
   const handleClickAddFriend = () => setShowFormAddFriend((b) => !b);
   const handleClickFriend = (friend) =>
@@ -18,6 +20,8 @@ const App = () => {
   const handleChangeBill = (e) => setTotalBill(e.target.value);
   const handleChangeMySpend = (e) => setMySpend(e.target.value);
   const handleChangeWhoWillPay = (e) => setWhoWillWpay(e.target.value);
+  const handleChangeNameOffFriend = (e) => setNameOffFriend(e.target.value);
+  const handleChangeImgOffFriend = (e) => setImgOffFriend(e.target.value);
 
   const handleSubmitShareBill = (e) => {
     e.preventDefault();
@@ -29,7 +33,7 @@ const App = () => {
               accountValue:
                 whoWillpay === "you"
                   ? friend.accountValue + (+totalBill - +mySpend)
-                  : friend.accountValue - mySpend,
+                  : friend.accountValue - +mySpend,
             }
           : friend,
       ),
@@ -39,6 +43,19 @@ const App = () => {
     setMySpend("");
     setWhoWillWpay("you");
   };
+
+  const handleSubmitAddFriend = (e) => {
+    e.preventDefault();
+
+    setFriendsAcc((prev) => [
+      ...prev,
+      { name: nameOffFriend, accountValue: 0, imgUrl: imgOffFriend },
+    ]);
+    setNameOffFriend("");
+    setImgOffFriend("");
+    setShowFormAddFriend(false);
+  };
+
   return (
     <>
       <Header />
@@ -48,6 +65,11 @@ const App = () => {
         friendsAcc={friendsAcc}
         handleClickAddFriend={handleClickAddFriend}
         showFormAddFriend={showFormAddFriend}
+        handleSubmitAddFriend={handleSubmitAddFriend}
+        handleChangeNameOffFriend={handleChangeNameOffFriend}
+        handleChangeImgOffFriend={handleChangeImgOffFriend}
+        nameOffFriend={nameOffFriend}
+        imgOffFriend={imgOffFriend}
       />
       <FormConta
         totalBill={totalBill}

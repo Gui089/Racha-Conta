@@ -22,6 +22,11 @@ const Container = ({
   friendsAcc,
   handleClickAddFriend,
   showFormAddFriend,
+  handleSubmitAddFriend,
+  handleChangeNameOffFriend,
+  handleChangeImgOffFriend,
+  nameOffFriend,
+  imgOffFriend,
 }) => {
   const getMsgInfo = (balance) =>
     balance < 0
@@ -54,11 +59,19 @@ const Container = ({
           );
         })}
         {showFormAddFriend && (
-          <form className="form-add-friend">
+          <form onSubmit={handleSubmitAddFriend} className="form-add-friend">
             <label>Nome</label>
-            <input type="text" />
+            <input
+              value={nameOffFriend}
+              onChange={handleChangeNameOffFriend}
+              type="text"
+            />
             <label>Foto</label>
-            <input type="text" />
+            <input
+              value={imgOffFriend}
+              onChange={handleChangeImgOffFriend}
+              type="text"
+            />
             <button className="button">Adicionar</button>
           </form>
         )}
