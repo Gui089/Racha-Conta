@@ -6,8 +6,8 @@ import { useState } from "react";
 const App = () => {
   const [friendsAcc, setFriendsAcc] = useState(friends);
   const [selectFriend, setSelectFriend] = useState(null);
-  const [totalBill, setTotalBill] = useState("100");
-  const [mySpend, setMySpend] = useState("50");
+  const [totalBill, setTotalBill] = useState("");
+  const [mySpend, setMySpend] = useState("");
   const [whoWillpay, setWhoWillWpay] = useState("you");
 
   const handleClickFriend = (friend) =>
@@ -32,6 +32,10 @@ const App = () => {
           : friend,
       ),
     );
+    setSelectFriend(null);
+    setTotalBill("");
+    setMySpend("");
+    setWhoWillWpay("you");
   };
   return (
     <>
